@@ -167,7 +167,6 @@ body > section,
 .navbar-nav li a:focus,
 .navbar-nav li a:hover {
 	background-color: transparent;
-	border-top: 1px solid #32B0EE;
 	color: #fff;
 }
 
@@ -348,7 +347,7 @@ top: -8px;
 
 .work-filter ul li a:hover,
 .work-filter ul li a.active {
-  background-color: #0eb493;
+  background-color: #ff3232;
   border-radius: 6px;
   color: #fff;
   padding: 5px 17px;
@@ -370,14 +369,14 @@ top: -8px;
 }
 
 .overlay {
-	background-color: rgba(14,180,147,.9);
+	background-color: rgba(255, 255, 255, 0.749);
 	text-align: center;
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	color: #fff;
+	color: rgb(255, 0, 0);
 	
 	opacity: 0;
 	filter: alpha(opacity=0);
