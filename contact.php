@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<?php
+include './admin/session2.php';
+$conn = $pdo->open();
+$stmt = $conn->prepare("SELECT * FROM photographer_info WHERE photographer_info_id=:id");
+$stmt->execute(['id' => 1]);
+foreach ($stmt as $row) {
+?>
+    <html lang="en">
 
-<head>
+    <head>
 
-    <title>Gymso Fitness HTML Template</title>
+        <title><?php echo $row['photographer_info_name']; ?></title>
+
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -26,7 +34,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
 
-            <a class="navbar-brand" href="index.php">Gymso Fitness</a>
+            <a class="navbar-brand" href="index.php"><?php echo $row['photographer_info_name']; ?></a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,58 +66,67 @@
                 </ul>
 
                 <ul class="social-icon ml-lg-3">
-                    <li><a href="https://fb.com/tooplate" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-twitter"></a></li>
-                    <li><a href="#" class="fa fa-instagram"></a></li>
-                </ul>
+                        <?php if (!empty($row['photographer_info_social_media1_type'])) { ?>
+                            <li><a href="<?php echo $row['photographer_info_social_media1']; ?>" class="fa fa-<?php echo $row['photographer_info_social_media1_type']; ?>"></a></li>
+                        <?php } ?>
+                        <?php if (!empty($row['photographer_info_social_media2_type'])) { ?>
+                            <li><a href="<?php echo $row['photographer_info_social_media2']; ?>" class="fa fa-<?php echo $row['photographer_info_social_media2_type']; ?>"></a></li>
+                        <?php } ?>
+                        <?php if (!empty($row['photographer_info_social_media3_type'])) { ?>
+                            <li><a href="<?php echo $row['photographer_info_social_media3']; ?>" class="fa fa-<?php echo $row['photographer_info_social_media3_type']; ?>"></a></li>
+                        <?php } ?>
+                    </ul>
             </div>
 
         </div>
     </nav>
 
-   <!-- CONTACT -->
-   <section class="schedule section">
-    <div class="container">
-        <div class="row">
+    <!-- CONTACT -->
+        <section class="schedule section">
+            <div class="container">
+                <div class="row">
 
-            <div class="mt-5 ml-auto col-lg-5 col-md-6 col-12">
-                <h2 class="text-white mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Feel free to ask anything</h2>
+                    <div class="mt-5 ml-auto col-lg-5 col-md-6 col-12">
+                        <h2 class="text-white mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Feel free to ask anything</h2>
 
-                <form action="#" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400"
-                    role="form">
-                    <input type="text" class="form-control" name="cf-name" placeholder="Name">
+                        <form action="#" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
+                            <input type="text" class="form-control" name="cf-name" placeholder="Name">
 
-                    <input type="tel" class="form-control" name="cf-email" placeholder="Phone">
+                            <input type="tel" class="form-control" name="cf-email" placeholder="Phone">
 
-                    <input type="email" class="form-control" name="cf-email" placeholder="Email">
+                            <input type="email" class="form-control" name="cf-email" placeholder="Email">
 
-                    <textarea class="form-control" rows="5" name="cf-message" placeholder="Message"></textarea>
+                            <textarea class="form-control" rows="5" name="cf-message" placeholder="Message"></textarea>
 
-                    <button type="submit" class="form-control" id="submit-button" name="submit" style="background-color: red;">Send
-                        Message</button>
-                </form>
-            </div>
+                            <button type="submit" class="form-control" id="submit-button" name="submit" style="background-color: red;">Send
+                                Message</button>
+                        </form>
+                    </div>
 
-            <div class="mt-5 mx-auto col-lg-5 col-md-6 col-12">
-                <h2 class="text-white mb-4" data-aos="fade-up" data-aos-delay="500">Where you can <span>find us</span></h2>
+                    <div class="mt-5 ml-auto col-lg-5 col-md-6 col-12">
+                        <h2 class="text-white mb-4" data-aos="fade-up" data-aos-delay="500">Where you can <span>find us</span></h2>
 
-                <p class="text-white" data-aos="fade-up" data-aos-delay="600"><i class="fa fa-map-marker mr-1"></i> 120-240 Rio de
-                    Janeiro - State of Rio de Janeiro, Brazil</p>
-                    <p class="text-white" data-aos="fade-up" data-aos-delay="700">
-                        <i class="fa fa-phone mr-1"></i> +91 90353-76766</p>
-                    <p class="text-white" data-aos="fade-up" data-aos-delay="800">
-                        <i class="fa fa-envelope-o mr-1"></i>
-                    <a >support@7SoftSolution.com</a><p>
-                <div class="google-map" data-aos="fade-up" data-aos-delay="900">
-                    <iframe
-                        src="https://maps.google.com/maps?q=Av.+Lúcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                        width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        <?php if(!empty($row['photographer_info_address'])){ ?>
+                        <p class="text-white" data-aos="fade-up" data-aos-delay="600"><i class="fa fa-map-marker mr-1"></i> <?php echo $row['photographer_info_address']; ?></p>
+                        <p class="text-white" data-aos="fade-up" data-aos-delay="700">
+                            <?php }if(!empty($row['photographer_info_phone'])){ ?>
+                            <i class="fa fa-phone mr-1"></i>  <?php echo $row['photographer_info_phone']; ?>
+                        </p>
+                        <?php } if(!empty($row['photographer_info_email'])){ ?>
+                        <p class="text-white" data-aos="fade-up" data-aos-delay="800">
+                            <i class="fa fa-envelope-o mr-1"></i>
+                            <a> <?php echo $row['photographer_info_email']; ?></a>
+                        <p>
+                            <?php } if(!empty($row['photographer_info_address_map'])){ ?>
+                        <div class="google-map" data-aos="fade-up" data-aos-delay="900">
+                            <iframe src="<?php echo $row['photographer_info_address_map']; ?>" width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        </div>
+                        <?php }?>
+                    </div>
+
                 </div>
             </div>
-
-        </div>
-    </div>
-</section>
+        </section>
 
 
    <!-- FOOTER -->
@@ -132,5 +149,5 @@
     <script src="js/smoothscroll.js"></script>
     <script src="js/custom.js"></script>
 </body>
-
+<?php } ?>
 </html>

@@ -6,6 +6,7 @@
 		$id = $_POST['id'];
 		$filename = $_FILES['photo']['name'];
 		if(!empty($filename)){
+			$conn = $pdo->open();
 			$stmt = $conn->prepare("SELECT admin_photo FROM admin WHERE admin_id=:id");
 			$stmt->execute(['id' => $id]);
 			foreach ($stmt as $row)
@@ -13,9 +14,7 @@
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
                 $filename=date('Y-m-d').'_'.time().'.'.$ext;
 			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);
-			$conn = $pdo->open();
-
-			try{
+						try{
 				$stmt = $conn->prepare("UPDATE admin SET admin_photo=:photo WHERE admin_id=:id");
 				$stmt->execute(['photo'=>$filename, 'id'=>$id]);
 				$_SESSION['success'] = 'admin photo updated successfully';
