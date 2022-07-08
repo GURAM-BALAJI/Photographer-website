@@ -59,7 +59,7 @@
                     <td style="text-align: center;"> <input type="checkbox" name="admin_special" <?php if ($row['admin_special']) echo "checked"; ?>> </td>
                     <td> </td>
                 </tr>
-          
+
                 <tr>
                     <td> </td>
                     <td> PHOTOGRAPHER INFO </td>
@@ -68,7 +68,7 @@
                     <td style="text-align: center;"> <input type="checkbox" name="photographer_info_edit" <?php if ($row['photographer_info_edit']) echo "checked"; ?>> </td>
                     <td> </td>
                     <td> </td>
-                     <td> </td>
+                    <td> </td>
                 </tr>
                 <tr>
                     <td> </td>
@@ -120,6 +120,16 @@
                     <td style="text-align: center;"> <input type="checkbox" name="team_create" <?php if ($row['team_create']) echo "checked"; ?>> </td>
                     <td style="text-align: center;"> <input type="checkbox" name="team_edit" <?php if ($row['team_edit']) echo "checked"; ?>> </td>
                     <td style="text-align: center;"> <input type="checkbox" name="team_del" <?php if ($row['team_del']) echo "checked"; ?>> </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td> CATEGORY </td>
+                    <td style="text-align: center;"> <input type="checkbox" name="category_view" <?php if ($row['category_view']) echo "checked"; ?>> </td>
+                    <td style="text-align: center;"> <input type="checkbox" name="category_create" <?php if ($row['category_create']) echo "checked"; ?>> </td>
+                    <td style="text-align: center;"> <input type="checkbox" name="category_edit" <?php if ($row['category_edit']) echo "checked"; ?>> </td>
+                    <td style="text-align: center;"> <input type="checkbox" name="category_del" <?php if ($row['category_del']) echo "checked"; ?>> </td>
                     <td> </td>
                     <td> </td>
                 </tr>

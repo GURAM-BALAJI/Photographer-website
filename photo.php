@@ -99,10 +99,12 @@ foreach ($stmt as $row) {
                     <div class="work-filter wow fadeInRight animated" data-wow-duration="500ms">
                         <ul class="text-center">
                             <li><a href="javascript:;" data-filter="all" class="active filter">All</a></li>
-                            <li><a href="javascript:;" data-filter=".branding" class="filter">Branding</a></li>
-                            <li><a href="javascript:;" data-filter=".wedding" class="filter">web</a></li>
-                            <li><a href="javascript:;" data-filter=".logo-design" class="filter">logo design</a></li>
-                            <li><a href="javascript:;" data-filter=".photography" class="filter">photography</a></li>
+                            <?php
+                            $stmt_category = $conn->prepare("SELECT * FROM category");
+                            $stmt_category->execute();
+                            foreach ($stmt_category as $row_category) { ?>
+                                <li><a href="javascript:;" data-filter=".<?php echo $row_category['category_name']; ?>" class="filter"><?php echo $row_category['category_name']; ?></a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>

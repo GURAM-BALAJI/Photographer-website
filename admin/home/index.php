@@ -50,6 +50,126 @@ include '../includes/header.php'; ?>
           <!-- ./col -->
           
 
+         
+          <?php if ($admin['gallery_view']) { ?>
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <?php
+                  $sql6 = "SELECT gallery_id from gallery";
+                  $query6 = $conn->prepare($sql6);;
+                  $query6->execute();
+                  $results6 = $query6->fetchAll(PDO::FETCH_OBJ);
+                  $query = $query6->rowCount();
+                  echo "<h3>" . $query . "</h3>";
+                  ?>
+                  <div class="stat-panel-title text-uppercase">Total gallery</div>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-picture-o"></i>
+                </div>
+                <a href="../gallery/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+          <?php } ?>
+           
+
+          <?php if ($admin['video_gallery_view']) { ?>
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <?php
+                  $sql6 = "SELECT video_gallery_id from video_gallery";
+                  $query6 = $conn->prepare($sql6);;
+                  $query6->execute();
+                  $results6 = $query6->fetchAll(PDO::FETCH_OBJ);
+                  $query = $query6->rowCount();
+                  echo "<h3>" . $query . "</h3>";
+                  ?>
+                  <div class="stat-panel-title text-uppercase">Total video gallery</div>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-youtube"></i>
+                </div>
+                <a href="../video_gallery/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+          <?php } ?>
+
+
+          <?php if ($admin['team_view']) { ?>
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-blue">
+                <div class="inner">
+                  <?php
+                  $sql6 = "SELECT team_id from team";
+                  $query6 = $conn->prepare($sql6);;
+                  $query6->execute();
+                  $results6 = $query6->fetchAll(PDO::FETCH_OBJ);
+                  $query = $query6->rowCount();
+                  echo "<h3>" . $query . "</h3>";
+                  ?>
+                  <div class="stat-panel-title text-uppercase">Total team</div>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-users"></i>
+                </div>
+                <a href="../team/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+          <?php } ?>
+
+
+          <?php if ($admin['works_view']) { ?>
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-gray">
+                <div class="inner">
+                  <?php
+                  $sql6 = "SELECT works_id from works";
+                  $query6 = $conn->prepare($sql6);;
+                  $query6->execute();
+                  $results6 = $query6->fetchAll(PDO::FETCH_OBJ);
+                  $query = $query6->rowCount();
+                  echo "<h3>" . $query . "</h3>";
+                  ?>
+                  <div class="stat-panel-title text-uppercase">Total works</div>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-briefcase"></i>
+                </div>
+                <a href="../works/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+          <?php } ?>
+
+          <?php if ($admin['category_view']) { ?>
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <?php
+                  $sql6 = "SELECT category_id from category";
+                  $query6 = $conn->prepare($sql6);;
+                  $query6->execute();
+                  $results6 = $query6->fetchAll(PDO::FETCH_OBJ);
+                  $query = $query6->rowCount();
+                  echo "<h3>" . $query . "</h3>";
+                  ?>
+                  <div class="stat-panel-title text-uppercase">Total category</div>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-sitemap"></i>
+                </div>
+                <a href="../category/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+          <?php } ?>
+
+
           <?php if ($admin['admin_view']) { ?>
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
@@ -79,6 +199,8 @@ include '../includes/header.php'; ?>
             </div>
           <?php } ?>
 
+
+          
         </div>
     </div>
 

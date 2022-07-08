@@ -13,34 +13,38 @@
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li><a href="../home/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+      <li><a href="../home/index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       
       <?php
       if ($admin['photographer_info_view'] || $admin['works_view'] || $admin['gallery_view']) { ?>
         <li class="header">MANAGE</li>
         <?php
         if ($admin['photographer_info_view']) { ?>
-          <li><a href="../photographer_info/"><i class="fa fa-camera-retro"></i> <span>photographer_info</span></a></li>
+          <li><a href="../photographer_info/index.php"><i class="fa fa-camera-retro"></i> <span>photographer_info</span></a></li>
         <?php } ?>
         <?php
         if ($admin['works_view']) { ?>
-          <li><a href="../works/"><i class="fa fa-briefcase"></i> <span>What We Offer</span></a></li>
+          <li><a href="../works/index.php"><i class="fa fa-briefcase"></i> <span>What We Offer</span></a></li>
         <?php } ?>
       <?php
         if ($admin['gallery_view']) { ?>
-          <li><a href="../gallery/"><i class="fa fa-picture-o"></i> <span>Photo Gallery</span></a></li>
+          <li><a href="../gallery/index.php"><i class="fa fa-picture-o"></i> <span>Photo Gallery</span></a></li>
         <?php } ?>
         <?php
         if ($admin['video_gallery_view']) { ?>
-          <li><a href="../video_gallery/"><i class="fa fa-youtube"></i> <span>Video Gallery</span></a></li>
+          <li><a href="../video_gallery/index.php"><i class="fa fa-youtube"></i> <span>Video Gallery</span></a></li>
         <?php } ?>
         <?php
         if ($admin['home_image_view']) { ?>
-          <li><a href="../home_images/"><i class="fa fa-sliders"></i> <span>Home Images</span></a></li>
+          <li><a href="../home_images/index.php"><i class="fa fa-sliders"></i> <span>Home Images</span></a></li>
         <?php } ?>
         <?php
         if ($admin['team_view']) { ?>
-          <li><a href="../team/"><i class="fa fa-users"></i> <span>Team</span></a></li>
+          <li><a href="../team/index.php"><i class="fa fa-users"></i> <span>Team</span></a></li>
+        <?php } ?>
+        <?php
+        if ($admin['category_view']) { ?>
+          <li><a href="../category/index.php"><i class="fa fa-sitemap"></i> <span>Category</span></a></li>
         <?php } ?>
       <?php } ?>
       <?php

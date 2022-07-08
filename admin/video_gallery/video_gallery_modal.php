@@ -23,6 +23,13 @@
               <input type="text" class="form-control" name="video_gallery_name">
             </div>
           </div>
+          <div class="form-group">
+            <div class="col-sm-9">
+              <b>NOTE:</b><br>
+              * https://www.youtube.com/watch?v=<spam style="color:red">5P6O1oT8Mz8</spam></br>
+              * Copy and past only red colred text in youtube link field.
+            </div>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
@@ -59,7 +66,13 @@
               <input type="text" class="form-control" id="edit_video_gallery_name" name="video_gallery_name">
             </div>
           </div>
-         
+          <div class="form-group">
+            <div class="col-sm-9">
+              <b>NOTE:</b><br>
+              * https://www.youtube.com/watch?v=<spam style="color:red">5P6O1oT8Mz8</spam></br>
+              * Copy and past only red colred text in youtube link field.
+            </div>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>

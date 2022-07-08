@@ -19,11 +19,16 @@
             <label for="image_group" class="col-sm-3 control-label">Image Group</label>
             <div class="col-sm-9">
               <select class="form-control" name="image_group" required>
-                <option value="">Select Group</option>
-                <option value="wedding">Wedding</option>
-                <option value="others">Others</option>
+              <option value="">Select Group</option>
+              <?php
+                            $stmt_category = $conn->prepare("SELECT * FROM category");
+                            $stmt_category->execute();
+                            foreach ($stmt_category as $row_category) { ?>
+                <option value="<?php echo $row_category['category_name']; ?>"><?php echo $row_category['category_name']; ?></option>
+                <?php } ?>
               </select>
             </div>
+            
           </div>
       </div>
       <div class="modal-footer">

@@ -107,9 +107,30 @@ if ($req_per == 1) {
             $team_del = 1;
         else
             $team_del = 0;
+
+        if (isset($_POST['category_view']))
+            $category_view = 1;
+        else
+            $category_view = 0;
+        if (isset($_POST['category_create']))
+            $category_create = 1;
+        else
+            $category_create = 0;
+        if (isset($_POST['category_edit']))
+            $category_edit = 1;
+        else
+            $category_edit = 0;
+        if (isset($_POST['category_del']))
+            $category_del = 1;
+        else
+            $category_del = 0;
         $conn = $pdo->open();
         try {
             $stmt = $conn->prepare("UPDATE admin SET
+              category_view=:category_view,
+category_create=:category_create,
+category_edit=:category_edit,
+category_del=:category_del, 
             team_view=:team_view,
 team_create=:team_create,
 team_edit=:team_edit,
@@ -136,6 +157,10 @@ works_edit=:works_edit,
 works_del=:works_del
              WHERE admin_id=:id");
             $stmt->execute([
+                'category_view' => $category_view,
+                'category_create' => $category_create,
+                'category_edit' => $category_edit,
+                'category_del' => $category_del,
                 'team_view' => $team_view,
                 'team_create' => $team_create,
                 'team_edit' => $team_edit,
