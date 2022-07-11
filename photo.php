@@ -59,8 +59,17 @@ foreach ($stmt as $row) {
                                 Us</a>
                         </li>
 
+                     
                         <li class="nav-item">
-                            <a href="photo.php" class="nav-link active smoothScroll">Photos</a>
+                            <a href="#" class="nav-link smoothScroll">Photos <i class="fa fa-angle-down"></i></a>
+                            <ul id="nav-submenu" class="nav-submenu">
+                            <?php
+                            $stmt_category = $conn->prepare("SELECT * FROM category");
+                            $stmt_category->execute();
+                            foreach ($stmt_category as $row_category) { ?>
+                                <li class="nav-item"><a href="photo.php?id=<?php echo $row_category['category_id']; ?>" class="nav-link smoothScroll"><?php echo $row_category['category_name']; ?></a></li>
+                                <?php } ?>
+                            </ul>
                         </li>
 
                         <li class="nav-item">
@@ -93,29 +102,28 @@ foreach ($stmt as $row) {
         ==================================== -->
 
         <section id="works" class="works clearfix">
-            <div class="container">
+        <div class="container">
                 <div class="row">
-                    <!-- ABOUT -->
-                    <div class="work-filter wow fadeInRight animated" data-wow-duration="500ms">
-                        <ul class="text-center">
-                            <li><a href="javascript:;" data-filter="all" class="active filter">All</a></li>
-                            <?php
-                            $stmt_category = $conn->prepare("SELECT * FROM category");
-                            $stmt_category->execute();
-                            foreach ($stmt_category as $row_category) { ?>
-                                <li><a href="javascript:;" data-filter=".<?php echo $row_category['category_name']; ?>" class="filter"><?php echo $row_category['category_name']; ?></a></li>
-                            <?php } ?>
-                        </ul>
-                    </div>
+                    <?php
+                    $stmt_category = $conn->prepare("SELECT * FROM category where category_id=" . $_GET['id'] . "");
+                    $stmt_category->execute();
+                    foreach ($stmt_category as $row_category) { ?>
+                        <div class="mt-5 mb-lg-0 mb-4 col-lg-10 col-md-10 mx-auto col-12">
+                            <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300"><?php echo $row_category['category_name']; ?></h2>
+                            <p data-aos="fade-up" data-aos-delay="400">
+                                <?php echo $row_category['category_discription']; ?>
+                        </div>
+                    <?php } ?>
                 </div>
+                <hr>
             </div>
 
             <div class="project-wrapper">
                 <?php
-                $stmt_images = $conn->prepare("SELECT * FROM gallery");
+                $stmt_images = $conn->prepare("SELECT * FROM gallery where gallery_group=" . $_GET['id'] . "");
                 $stmt_images->execute();
                 foreach ($stmt_images as $row_images) { ?>
-                    <figure class="mix work-item <?php echo $row_images['gallery_group']; ?>">
+                    <figure class="mix work-item">
                         <img src="images/gallery/<?php echo $row_images['gallery_name']; ?>">
                         <figcaption class="overlay">
                             <a class="fancybox" rel="works" href="images/gallery/<?php echo $row_images['gallery_name']; ?>"><i class="fa fa-search-plus fa-4x"></i></a>
@@ -200,31 +208,21 @@ foreach ($stmt as $row) {
         <script src="js/aos.js"></script>
         <script src="js/smoothscroll.js"></script>
         <script src="js/custom.js"></script>
-
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js'></script>
+        <script src="./slideshow-script.js"></script>
 
         <!-- Main jQuery -->
         <script src="gallery/js/jquery-1.11.1.min.js"></script>
         <!-- Single Page Nav -->
         <script src="gallery/js/jquery.singlePageNav.min.js"></script>
-        <!-- Twitter Bootstrap -->
-        <script src="gallery/js/bootstrap.min.js"></script>
         <!-- jquery.fancybox.pack -->
         <script src="gallery/js/jquery.fancybox.pack.js"></script>
         <!-- jquery.mixitup.min -->
         <script src="gallery/js/jquery.mixitup.min.js"></script>
         <!-- jquery easing -->
         <script src="gallery/js/wow.min.js"></script>
-        <script>
-            var wow = new WOW({
-                boxClass: 'wow', // animated element css class (default is wow)
-                animateClass: 'animated', // animation css class (default is animated)
-                offset: 120, // distance to the element when triggering the animation (default is 0)
-                mobile: false, // trigger animations on mobile devices (default is true)
-                live: true // act on asynchronously loaded content (default is true)
-            });
-            wow.init();
-        </script>
-        <!-- Custom Functions -->
+   
         <script src="gallery/js/custom.js"></script>
 
     </body>

@@ -53,8 +53,16 @@ foreach ($stmt as $row) {
                                 Us</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="photo.php" class="nav-link smoothScroll">Photos</a>
+                          <li class="nav-item">
+                            <a href="#" class="nav-link smoothScroll">Photos <i class="fa fa-angle-down"></i></a>
+                            <ul id="nav-submenu" class="nav-submenu">
+                            <?php
+                            $stmt_category = $conn->prepare("SELECT * FROM category");
+                            $stmt_category->execute();
+                            foreach ($stmt_category as $row_category) { ?>
+                                <li class="nav-item"><a href="photo.php?id=<?php echo $row_category['category_id']; ?>" class="nav-link smoothScroll"><?php echo $row_category['category_name']; ?></a></li>
+                                <?php } ?>
+                            </ul>
                         </li>
 
                         <li class="nav-item">
@@ -227,6 +235,9 @@ foreach ($stmt as $row) {
         <script src="js/aos.js"></script>
         <script src="js/smoothscroll.js"></script>
         <script src="js/custom.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js'></script>
+        <script src="./slideshow-script.js"></script>
     </body>
 <?php } ?>
 

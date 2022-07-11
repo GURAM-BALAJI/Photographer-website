@@ -41,6 +41,7 @@
                 <option value="instagram">Instagram</option>
                 <option value="twitter">Twitter</option>
                 <option value="linkedin">Linkedin</option>
+                <option value="youtube-play">Youtube</option>
               </select>
             </div>
           </div>
@@ -61,6 +62,7 @@
                 <option value="instagram">Instagram</option>
                 <option value="twitter">Twitter</option>
                 <option value="linkedin">Linkedin</option>
+                <option value="youtube-play">Youtube</option>
               </select>
             </div>
           </div>

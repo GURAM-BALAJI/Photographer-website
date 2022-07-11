@@ -137,6 +137,7 @@ function getRow(id){
     success: function(response){
       $('.catid').val(response.category_id);
       $('#edit_name').val(response.category_name);
+      $('#edit_discription').val(response.category_discription);
         $('.catname').html(response.category_name);
     }
   });

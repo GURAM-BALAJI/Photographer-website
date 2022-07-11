@@ -11,11 +11,18 @@
         <form class="form-horizontal" method="POST" action="category_add.php">
           <div class="form-group">
             <label for="name" class="col-sm-3 control-label">Name</label>
-
             <div class="col-sm-9">
               <input type="text" class="form-control" id="name" name="name" required>
-            </div><br>
+            </div>
           </div>
+
+          <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">Discription</label>
+            <div class="col-sm-9">
+              <textarea name="discription" class="form-control"  cols="50" rows="8"></textarea>
+            </div>
+          </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
@@ -40,9 +47,14 @@
           <input type="hidden" class="catid" name="id">
           <div class="form-group">
             <label for="edit_name" class="col-sm-3 control-label">Name</label>
-
             <div class="col-sm-9">
               <input type="text" class="form-control" id="edit_name" name="name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">Discription</label>
+            <div class="col-sm-9">
+              <textarea name="discription" id="edit_discription" class="form-control" cols="50" rows="8"></textarea>
             </div>
           </div>
          

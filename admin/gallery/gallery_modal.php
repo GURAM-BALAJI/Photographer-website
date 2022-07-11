@@ -24,7 +24,7 @@
                             $stmt_category = $conn->prepare("SELECT * FROM category");
                             $stmt_category->execute();
                             foreach ($stmt_category as $row_category) { ?>
-                <option value="<?php echo $row_category['category_name']; ?>"><?php echo $row_category['category_name']; ?></option>
+                <option value="<?php echo $row_category['category_id']; ?>"><?php echo $row_category['category_name']; ?></option>
                 <?php } ?>
               </select>
             </div>

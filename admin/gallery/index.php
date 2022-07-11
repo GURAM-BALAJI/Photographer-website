@@ -78,7 +78,10 @@
                           <tr>
                           <td>" . $slno++ . "</td>
                             <td><img src='../../images/gallery/" . $row['gallery_name'] . "' height='50px' width='50px'> " . $row['gallery_name'] . "</td>";
-                            echo "<td>" . $row['gallery_group'] . "</td>";
+                            $stmt_category = $conn->prepare("SELECT * FROM category where category_id=" . $row['gallery_group'] . "");
+                            $stmt_category->execute();
+                            foreach ($stmt_category as $row_category)
+                              echo "<td>" . $row_category['category_name'] . "</td>";
                             echo "<td>";
                             if ($admin['gallery_del'])
                               echo "<button class='btn btn-danger btn-sm delete btn-flat' data-id='" . $row['gallery_id'] . "'><i class='fa fa-trash'></i> Delete</button>";

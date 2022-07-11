@@ -54,7 +54,15 @@ foreach ($stmt as $row) {
                         </li>
 
                         <li class="nav-item">
-                            <a href="photo.php" class="nav-link smoothScroll">Photos</a>
+                            <a href="#" class="nav-link smoothScroll">Photos <i class="fa fa-angle-down"></i></a>
+                            <ul id="nav-submenu" class="nav-submenu">
+                            <?php
+                            $stmt_category = $conn->prepare("SELECT * FROM category");
+                            $stmt_category->execute();
+                            foreach ($stmt_category as $row_category) { ?>
+                                <li class="nav-item"><a href="photo.php?id=<?php echo $row_category['category_id']; ?>" class="nav-link smoothScroll"><?php echo $row_category['category_name']; ?></a></li>
+                                <?php } ?>
+                            </ul>
                         </li>
 
                         <li class="nav-item">
@@ -255,22 +263,25 @@ foreach ($stmt as $row) {
                     <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
                         <h2 class="text-white mb-4" data-aos="fade-up" data-aos-delay="500">Where you can <span>find us</span></h2>
 
-                        <?php if(!empty($row['photographer_info_address'])){ ?>
-                        <p class="text-white" data-aos="fade-up" data-aos-delay="600"><i class="fa fa-map-marker mr-1"></i> <?php echo $row['photographer_info_address']; ?></p>
-                        <p class="text-white" data-aos="fade-up" data-aos-delay="700">
-                            <?php }if(!empty($row['photographer_info_phone'])){ ?>
-                            <i class="fa fa-phone mr-1"></i>  <?php echo $row['photographer_info_phone']; ?>
-                        </p>
-                        <?php } if(!empty($row['photographer_info_email'])){ ?>
-                        <p class="text-white" data-aos="fade-up" data-aos-delay="800">
-                            <i class="fa fa-envelope-o mr-1"></i>
-                            <a> <?php echo $row['photographer_info_email']; ?></a>
-                        <p>
-                            <?php } if(!empty($row['photographer_info_address_map'])){ ?>
-                        <div class="google-map" data-aos="fade-up" data-aos-delay="900">
-                            <iframe src="<?php echo $row['photographer_info_address_map']; ?>" width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                        </div>
-                        <?php }?>
+                        <?php if (!empty($row['photographer_info_address'])) { ?>
+                            <p class="text-white" data-aos="fade-up" data-aos-delay="600"><i class="fa fa-map-marker mr-1"></i> <?php echo $row['photographer_info_address']; ?></p>
+                            <p class="text-white" data-aos="fade-up" data-aos-delay="700">
+                            <?php }
+                        if (!empty($row['photographer_info_phone'])) { ?>
+                                <i class="fa fa-phone mr-1"></i> <?php echo $row['photographer_info_phone']; ?>
+                            </p>
+                        <?php }
+                        if (!empty($row['photographer_info_email'])) { ?>
+                            <p class="text-white" data-aos="fade-up" data-aos-delay="800">
+                                <i class="fa fa-envelope-o mr-1"></i>
+                                <a> <?php echo $row['photographer_info_email']; ?></a>
+                            <p>
+                            <?php }
+                        if (!empty($row['photographer_info_address_map'])) { ?>
+                            <div class="google-map" data-aos="fade-up" data-aos-delay="900">
+                                <iframe src="<?php echo $row['photographer_info_address_map']; ?>" width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                            </div>
+                        <?php } ?>
                     </div>
 
                 </div>

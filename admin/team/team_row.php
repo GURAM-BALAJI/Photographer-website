@@ -29,6 +29,10 @@ if (isset($_POST['id'])) {
 		$team_social_media1_type .= "<option value='linkedin' selected>Linkedin</option>";
 	else
 		$team_social_media1_type .= "<option value='linkedin'>Linkedin</option>";
+		if ($sm1_t == 'youtube-play')
+		$team_social_media1_type .= "<option value='youtube-play' selected>Youtube</option>";
+	else
+		$team_social_media1_type .= "<option value='youtube-play'>Youtube</option>";
 	$team_social_media1_type .= "</select>";
 
 	$sm2_t = $row['team_social_media2'];
@@ -50,6 +54,10 @@ if (isset($_POST['id'])) {
 		$team_social_media2_type .= "<option value='linkedin' selected>Linkedin</option>";
 	else
 		$team_social_media2_type .= "<option value='linkedin'>Linkedin</option>";
+		if ($sm2_t == 'youtube-play')
+		$team_social_media2_type .= "<option value='youtube-play' selected>Youtube</option>";
+	else
+		$team_social_media2_type .= "<option value='youtube-play'>Youtube</option>";
 	$team_social_media2_type .= "</select>";
 
 
